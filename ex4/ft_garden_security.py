@@ -33,18 +33,18 @@ class Plant:
             raise ValueError("Age cannot be negative.")
         self._age = value
 
-print("=== Garden Security System ===")
+# print("=== Garden Security System ===")
 
-flower = Plant("Rose", 15.0, 10)
-print(f"Plant created: {flower}\n")
+# flower = Plant("Rose", 15.0, 10)
+# print(f"Plant created: {flower}\n")
 
-# flower._height = -15
-# flower.age = -15
-flower.set_height(25)
-flower.set_age(30)
-print()
+# # flower._height = -15
+# # flower.age = -15
+# flower.set_height(25)
+# flower.set_age(30)
+# print()
 # flower.set_height(-25)
 # flower.set_age(-30)
-print()
+# print()
 
-print(f"Current state: {flower}")
+# print(f"Current state: {flower}")
