@@ -83,18 +83,3 @@ class Vegetable(Plant):
         print(f"{self.name}: {self.get_height()}cm, {self.get_age()} days old")
         print(f"Harvest season: {self.harvest_season}")
         print(f"Nutritional value: {self.nutritional_value}")
-
-# print("=== Garden Security System ===")
-
-# flower = Plant("Rose", 15.0, 10)
-# print(f"Plant created: {flower}\n")
-
-# # flower._height = -15
-# # flower.age = -15
-# flower.set_height(25)
-# flower.set_age(30)
-# print()
-# flower.set_height(-25)
-# flower.set_age(-30)
-# print()
-# print(f"Current state: {flower}")
