@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 class Plant:
     def __init__(self, name, height, age) -> None:
-        self.name = name
-        self.ht = height
-        self.age_init = age
+        self.name: str = name
+        self.ht: float = height
+        self.age_in: int = age
         self.total_grw: float = 0
 
     def show(self) -> None:
-        print(f"{self.name}: {self.ht}cm, {self.age_init} days old")
+        print(f"{self.name}: {self.ht}cm, {self.age_in} days old")
 
     def grow(self) -> None:
         curr_ht = self.ht
@@ -19,7 +19,7 @@ class Plant:
         self.ht = curr_ht
 
     def age(self) -> None:
-        self.age_init = self.age_init + 1
+        self.age_in = self.age_in + 1
 
 
 def main():

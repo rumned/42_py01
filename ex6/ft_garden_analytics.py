@@ -1,6 +1,6 @@
 class Plant:
     def __init__(self, name, height, age) -> None:
-        self.name = name
+        self.name: str = name
         self.set_height(height)
         self.set_age(age)
         self.total_grw: float = 0
@@ -100,6 +100,27 @@ class Vegetable(Plant):
         self.set_age(self.get_age() + 1)
         self.total_grw += 1
         self.nutritional_value += 20
+
+
+class Seed(Flower):
+    def __init__(self, name, height, age, color) -> None:
+        super().__init__(name, height, age, color)
+        self.color = color
+        self.is_blooming = False
+        self.seed_number = 67
+
+    def bloom(self) -> None:
+        print(f"[asking the {self.name.lower()} to bloom]")
+        self.is_blooming = True
+
+    def show(self) -> None:
+        super().show()
+        print(f"Color: {self.color}")
+        if self.is_blooming is False:
+            print(f"{self.name} has not bloomed yet")
+        else:
+            print(f"{self.name} is blooming beautifully!")
+            print(f"Seeds: {self.seed_number}")
 
 
 flower = Plant("Rose", 15.0, 10)

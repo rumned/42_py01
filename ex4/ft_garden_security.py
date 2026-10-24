@@ -1,6 +1,6 @@
 class Plant:
     def __init__(self, name, height, age) -> None:
-        self.name = name
+        self.name: str = name
         self.set_height(height)
         self.set_age(age)
         self.total_grw: float = 0
