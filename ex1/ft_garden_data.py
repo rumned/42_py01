@@ -12,7 +12,7 @@ class Plant:
 def main():
     print("=== Garden Plant Registry ===")
     plants = [Plant("Rose", "25", "30"),
-              Plant("Sunflower", "85", "45"),
+              Plant("sunflower", "85", "45"),
               Plant("Cactus", "15", "120")
               ]
 

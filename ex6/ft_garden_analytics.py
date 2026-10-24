@@ -35,7 +35,7 @@ class Plant:
 
     @staticmethod
     def check_age(age_to_check):
-        if age_to_check > 365 :
+        if age_to_check > 365:
             return True
         return False
 
@@ -100,6 +100,7 @@ class Vegetable(Plant):
         self.set_age(self.get_age() + 1)
         self.total_grw += 1
         self.nutritional_value += 20
+
 
 flower = Plant("Rose", 15.0, 10)
 tree = Plant("Oak", 300, 1000)
