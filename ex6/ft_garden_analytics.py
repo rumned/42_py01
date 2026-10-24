@@ -3,7 +3,7 @@ class Plant:
         self.name = name
         self.set_height(height)
         self.set_age(age)
-        self.total_grw = 0
+        self.total_grw: float = 0
 
     def show(self) -> None:
         print(f"{self.name}: {self.get_height()}cm, {self.get_age()} days old")

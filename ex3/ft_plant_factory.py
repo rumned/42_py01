@@ -4,7 +4,7 @@ class Plant:
         self.name = name
         self.ht = height
         self.age_in = age
-        self.total_growth = 0
+        self.total_grw: float = 0
 
     def show(self) -> None:
         print(f"{self.name}: {self.ht}cm, {self.age_in} days old")
@@ -15,7 +15,7 @@ class Plant:
             curr_ht = round(curr_ht + 0.05, 4)
         else:
             curr_ht = round(curr_ht + 0.8, 4)
-        self.total_growth = round(self.total_growth + curr_ht - self.ht, 4)
+        self.total_grw = round(self.total_grw + curr_ht - self.ht, 4)
         self.ht = curr_ht
 
     def age(self) -> None:
