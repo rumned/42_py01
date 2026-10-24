@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name, height, age) -> None:
         self.name = name
         self.ht = height
         self.age_in = age
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name.capitalize()}: {self.ht}cm, {self.age_in} days old")
 
 

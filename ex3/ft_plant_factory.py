@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 class Plant:
-    def __init__(self, name, height, age):
+    def __init__(self, name, height, age) -> None:
         self.name = name
         self.ht = height
         self.age_in = age
         self.total_growth = 0
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name}: {self.ht}cm, {self.age_in} days old")
 
-    def grow(self):
+    def grow(self) -> None:
         curr_ht = self.ht
         if curr_ht >= 200:
             curr_ht = round(curr_ht + 0.05, 4)
@@ -18,7 +18,7 @@ class Plant:
         self.total_growth = round(self.total_growth + curr_ht - self.ht, 4)
         self.ht = curr_ht
 
-    def age(self):
+    def age(self) -> None:
         self.age_in = self.age_in + 1
 
 
