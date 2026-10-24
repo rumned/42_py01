@@ -4,11 +4,14 @@ class Plant:
         self.set_height(height)
         self.set_age(age)
         self.total_grw: float = 0
+        self._stats = self.Status()
 
     def show(self) -> None:
+        self._stats.plus_show_stat()
         print(f"{self.name}: {self.get_height()}cm, {self.get_age()} days old")
 
     def grow(self) -> None:
+        self._stats.plus_grow_stat()
         curr_ht = self.get_height()
         if curr_ht >= 200:
             curr_ht = round(curr_ht + 0.05, 4)
@@ -34,8 +37,12 @@ class Plant:
         self._age = value
 
     def age(self) -> None:
+        self._stats.plus_age_stat()
         curr_age = self.get_age()
         self.set_age(curr_age + 1)
+
+    def display(self) -> None:
+        self._stats.display_stat()
 
     @staticmethod
     def check_age(age_to_check: int) -> bool:
@@ -46,6 +53,27 @@ class Plant:
     @classmethod
     def anonymous(cls) -> "Plant":
         return cls("Unknown plant", 0.0, 0)
+
+    class Status:
+        def __init__(self) -> None:
+            self._grow_calls: int = 0
+            self._age_calls: int = 0
+            self._show_calls: int = 0
+
+        def plus_grow_stat(self) -> None:
+            self._grow_calls += 1
+
+        def plus_age_stat(self) -> None:
+            self._age_calls += 1
+
+        def plus_show_stat(self) -> None:
+            self._show_calls += 1
+
+        def display_stat(self) -> None:
+            print("Stats:", end=" ")
+            print(f"{self._grow_calls} grow", end=" ")
+            print(f"{self._age_calls} age", end=" ")
+            print(f"{self._show_calls} show")
 
 
 class Flower(Plant):
@@ -72,8 +100,10 @@ class Tree(Plant):
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
         self.shade = False
+        self._stats: Tree.Status = self.Status()
 
     def produce_shade(self) -> None:
+        self._stats.plus_shade_stat()
         print(f"[asking the {self.name.lower()} to produce shade]")
         self.shade = True
 
@@ -86,6 +116,18 @@ class Tree(Plant):
                 f"now produces a shade of {self.get_height()}cm long "
                 f"and {self.trunk_diameter}cm wide."
             )
+
+    class Status(Plant.Status):
+        def __init__(self) -> None:
+            super().__init__()
+            self._shade_calls: int = 0
+
+        def plus_shade_stat(self) -> None:
+            self._shade_calls += 1
+
+        def display_stat(self) -> None:
+            super().display_stat()
+            print(f"{self._shade_calls} shade")
 
 
 class Vegetable(Plant):
@@ -123,6 +165,10 @@ class Seed(Flower):
             print(f"Seeds: {self.seed_number}")
 
 
+def display_from_outside(plant: Plant) -> None:
+    plant.display()
+
+
 def main():
     flower = Plant("Rose", 15.0, 10)
     tree = Plant("Oak", 300, 1000)
@@ -130,6 +176,8 @@ def main():
     print(f"Is more than 1yr? {flower.check_age(flower.get_age())}")
     print(f"Tree age: {tree.get_age()}")
     print(f"Is more than 1yr? {tree.check_age(tree.get_age())}")
+    print(f"Is 365 days more than 1yr? {Plant.check_age(365)}")
+    print(f"Is 366 days more than 1yr? {Plant.check_age(366)}")
     print("="*20)
     seed = Seed("sunflower", 80.0, 45, "yellow")
     seed.show()
@@ -137,9 +185,41 @@ def main():
     seed.age()
     seed.bloom()
     seed.show()
+    seed.display()
+    print("="*20)
+    rose = Flower("Rose", 15.0, 10, "red")
+    rose.show()
+    rose.bloom()
+    rose.grow()
+    rose.show()
+    rose.display()
+    print("="*20)
+    oak = Tree("Oak", 300.0, 1000, 50)
+    oak.show()
+    oak.produce_shade()
+    oak.show()
+    for _ in range(3):
+        oak.grow()
+    oak.age()
+    oak.produce_shade()
+    oak.display()
+    print("="*20)
+    carrot = Vegetable("Carrot", 5.0, 20, "Carrot Season")
+    carrot.grow()
+    carrot.grow()
+    carrot.age()
+    carrot.show()
+    carrot.display()
     print("="*20)
     unknown = Plant.anonymous()
     unknown.show()
+    unknown.display()
+    print("="*20)
+    display_from_outside(carrot)
+    display_from_outside(oak)
+    display_from_outside(rose)
+    display_from_outside(seed)
+    display_from_outside(unknown)
 
 
 if __name__ == "__main__":
