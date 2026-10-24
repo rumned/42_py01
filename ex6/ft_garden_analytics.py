@@ -33,9 +33,11 @@ class Plant:
             raise ValueError("Age cannot be negative.")
         self._age = value
 
-	@staticmethod
-    def check_age(age_to_check)
-        age_to_check = self._age
+    @staticmethod
+    def check_age(age_to_check):
+        if age_to_check > 365 :
+            return True
+        return False
 
 
 class Flower(Plant):
@@ -95,19 +97,7 @@ class Vegetable(Plant):
         self.total_grw += 1
         self.nutritional_value += 20
 
-
-rose = Flower("Rose", 25, 30, "red")
-rose.show()
-rose.bloom()
-rose.show()
-print("-"*20)
-pine = Tree("Pine", 500.0, 1825, 5.0)
-pine.show()
-pine.produce_shade()
-pine.show()
-print("-"*20)
-tomato = Vegetable("Tomato", 80, 90, "April")
-while tomato.nutritional_value <= 100:
-    tomato.show()
-    print("-"*20)
-    tomato.grow()
+flower = Plant("Rose", 15.0, 10)
+tree = Plant("Oak", 300, 1000)
+print(flower.check_age(flower.get_age()))
+print(Plant.check_age(tree.get_age()))
