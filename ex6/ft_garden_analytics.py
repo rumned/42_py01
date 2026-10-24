@@ -39,6 +39,10 @@ class Plant:
             return True
         return False
 
+    @classmethod
+    def anonymous(cls) -> "Plant":
+        return cls("Unknown plant", 0, 0)
+
 
 class Flower(Plant):
     def __init__(self, name, height, age, color):
@@ -101,3 +105,5 @@ flower = Plant("Rose", 15.0, 10)
 tree = Plant("Oak", 300, 1000)
 print(flower.check_age(flower.get_age()))
 print(Plant.check_age(tree.get_age()))
+unknown = Plant.anonymous()
+unknown.show()
