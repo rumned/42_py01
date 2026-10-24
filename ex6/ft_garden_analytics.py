@@ -33,6 +33,10 @@ class Plant:
             raise ValueError("Age cannot be negative.")
         self._age = value
 
+    def age(self) -> None:
+        curr_age = self.get_age()
+        self.set_age(curr_age + 1)
+
     @staticmethod
     def check_age(age_to_check: int) -> bool:
         if age_to_check > 365:
@@ -41,7 +45,7 @@ class Plant:
 
     @classmethod
     def anonymous(cls) -> "Plant":
-        return cls("Unknown plant", 0, 0)
+        return cls("Unknown plant", 0.0, 0)
 
 
 class Flower(Plant):
@@ -97,8 +101,6 @@ class Vegetable(Plant):
 
     def grow(self) -> None:
         super().grow()
-        self.set_age(self.get_age() + 1)
-        self.total_grw += 1
         self.nutritional_value += 20
 
 
@@ -116,20 +118,29 @@ class Seed(Flower):
     def show(self) -> None:
         super().show()
         if self.is_blooming is False:
-            print(f"Seeds: 0")
+            print("Seeds: 0")
         else:
             print(f"Seeds: {self.seed_number}")
 
 
-flower = Plant("Rose", 15.0, 10)
-tree = Plant("Oak", 300, 1000)
-print(flower.check_age(flower.get_age()))
-print(Plant.check_age(tree.get_age()))
-seed = Seed("sunflower", 80.0, 45, "yellow")
-seed.show()
-seed.grow()
-seed.age()
-seed.bloom()
-seed.show()
-unknown = Plant.anonymous()
-unknown.show()
+def main():
+    flower = Plant("Rose", 15.0, 10)
+    tree = Plant("Oak", 300, 1000)
+    print(f"Flower age: {flower.get_age()}")
+    print(f"Is more than 1yr? {flower.check_age(flower.get_age())}")
+    print(f"Tree age: {tree.get_age()}")
+    print(f"Is more than 1yr? {tree.check_age(tree.get_age())}")
+    print("="*20)
+    seed = Seed("sunflower", 80.0, 45, "yellow")
+    seed.show()
+    seed.grow()
+    seed.age()
+    seed.bloom()
+    seed.show()
+    print("="*20)
+    unknown = Plant.anonymous()
+    unknown.show()
+
+
+if __name__ == "__main__":
+    main()

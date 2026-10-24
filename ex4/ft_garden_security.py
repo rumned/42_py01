@@ -38,29 +38,34 @@ class Plant:
         self.set_age(curr_age + 1)
 
 
-print("=== Garden Security System ===")
-flower = Plant("Rose", 15.0, 10)
-print("Current state:", end=" ")
-flower.show()
+def main():
+    print("=== Garden Security System ===")
+    flower = Plant("Rose", 15.0, 10)
+    print("Current state:", end=" ")
+    flower.show()
 
-# flower._height = -15
-# flower.age = -15
-flower.set_height(25)
-print(f"Height updated:{flower.get_height()}cm")
-flower.set_age(30)
-print(f"Age updated:{flower.get_age()} days")
-flower.age()
-print(f"Age updated:{flower.get_age()} days")
-flower.grow()
-print(f"Plant grew:{flower.get_height()}cm")
-try:
-    flower.set_age(-1)
-except ValueError as e:
-    print(f"{e}")
-try:
-    flower.set_height(-1)
-except ValueError as e:
-    print(f"{e}")
-print()
-print("Current state:", end=" ")
-flower.show()
+    # flower._height = -15
+    # flower.age = -15
+    flower.set_height(25)
+    print(f"Height updated:{flower.get_height()}cm")
+    flower.set_age(30)
+    print(f"Age updated:{flower.get_age()} days")
+    flower.age()
+    print(f"Age updated:{flower.get_age()} days")
+    flower.grow()
+    print(f"Plant grew:{flower.get_height()}cm")
+    try:
+        flower.set_age(-1)
+    except ValueError as e:
+        print(f"{e}")
+    try:
+        flower.set_height(-1)
+    except ValueError as e:
+        print(f"{e}")
+    print()
+    print("Current state:", end=" ")
+    flower.show()
+
+
+if __name__ == "__main__":
+    main()

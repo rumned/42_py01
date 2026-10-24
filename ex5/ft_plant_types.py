@@ -33,6 +33,10 @@ class Plant:
             raise ValueError("Age cannot be negative.")
         self._age = value
 
+    def age(self) -> None:
+        curr_age = self.get_age()
+        self.set_age(curr_age + 1)
+
 
 class Flower(Plant):
     def __init__(self, name, height, age, color) -> None:
@@ -87,23 +91,29 @@ class Vegetable(Plant):
 
     def grow(self) -> None:
         super().grow()
-        self.set_age(self.get_age() + 1)
-        self.total_grw += 1
         self.nutritional_value += 20
 
 
-rose = Flower("Rose", 25, 30, "red")
-rose.show()
-rose.bloom()
-rose.show()
-print("-"*20)
-pine = Tree("Pine", 500.0, 1825, 5.0)
-pine.show()
-pine.produce_shade()
-pine.show()
-print("-"*20)
-tomato = Vegetable("Tomato", 80, 90, "April")
-while tomato.nutritional_value <= 100:
-    tomato.show()
+def main():
+    print("==Flower")
+    rose = Flower("Rose", 25, 30, "red")
+    rose.show()
+    rose.bloom()
+    rose.show()
     print("-"*20)
-    tomato.grow()
+    print("==Tree")
+    pine = Tree("Pine", 500.0, 1825, 5.0)
+    pine.show()
+    pine.produce_shade()
+    pine.show()
+    print("-"*20)
+    print("==Vegetable")
+    tomato = Vegetable("Tomato", 80, 90, "April")
+    while tomato.nutritional_value <= 100:
+        tomato.show()
+        print("-"*20)
+        tomato.grow()
+
+
+if __name__ == "__main__":
+    main()
