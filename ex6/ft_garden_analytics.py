@@ -47,7 +47,7 @@ class Plant:
 class Flower(Plant):
     def __init__(self, name, height, age, color) -> None:
         super().__init__(name, height, age)
-        self.color = color
+        self.color: str = color
         self.is_blooming = False
 
     def bloom(self) -> None:
@@ -115,12 +115,9 @@ class Seed(Flower):
 
     def show(self) -> None:
         super().show()
-        print(f"Color: {self.color}")
         if self.is_blooming is False:
-            print(f"{self.name} has not bloomed yet")
             print(f"Seeds: 0")
         else:
-            print(f"{self.name} is blooming beautifully!")
             print(f"Seeds: {self.seed_number}")
 
 
@@ -128,9 +125,10 @@ flower = Plant("Rose", 15.0, 10)
 tree = Plant("Oak", 300, 1000)
 print(flower.check_age(flower.get_age()))
 print(Plant.check_age(tree.get_age()))
-seed = Seed("sunflower", 80.0, 45)
+seed = Seed("sunflower", 80.0, 45, "yellow")
 seed.show()
 seed.grow()
+seed.age()
 seed.bloom()
 seed.show()
 unknown = Plant.anonymous()

@@ -5,7 +5,7 @@ class Plant:
         self.set_age(age)
         self.total_grw: float = 0
 
-    def show(self) -> None:
+    def show(self) -> str:
         print(f"{self.name}: {self.get_height()}cm, {self.get_age()} days old")
 
     def grow(self) -> None:
@@ -23,7 +23,7 @@ class Plant:
     def set_height(self, value: float) -> None:
         if value < 0:
             raise ValueError("Height cannot be negative.")
-        self._height = value
+        self._height = float(value)
 
     def get_age(self) -> int:
         return self._age
@@ -33,18 +33,34 @@ class Plant:
             raise ValueError("Age cannot be negative.")
         self._age = value
 
-# print("=== Garden Security System ===")
+    def age(self) -> None:
+        curr_age = self.get_age()
+        self.set_age(curr_age + 1)
 
-# flower = Plant("Rose", 15.0, 10)
-# print(f"Plant created: {flower}\n")
 
-# # flower._height = -15
-# # flower.age = -15
-# flower.set_height(25)
-# flower.set_age(30)
-# print()
-# flower.set_height(-25)
-# flower.set_age(-30)
-# print()
+print("=== Garden Security System ===")
+flower = Plant("Rose", 15.0, 10)
+print("Current state:", end=" ")
+flower.show()
 
-# print(f"Current state: {flower}")
+# flower._height = -15
+# flower.age = -15
+flower.set_height(25)
+print(f"Height updated:{flower.get_height()}cm")
+flower.set_age(30)
+print(f"Age updated:{flower.get_age()} days")
+flower.age()
+print(f"Age updated:{flower.get_age()} days")
+flower.grow()
+print(f"Plant grew:{flower.get_height()}cm")
+try:
+    flower.set_age(-1)
+except ValueError as e:
+    print(f"{e}")
+try:
+    flower.set_height(-1)
+except ValueError as e:
+    print(f"{e}")
+print()
+print("Current state:", end=" ")
+flower.show()
