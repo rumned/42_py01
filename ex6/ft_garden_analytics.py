@@ -118,6 +118,7 @@ class Seed(Flower):
         print(f"Color: {self.color}")
         if self.is_blooming is False:
             print(f"{self.name} has not bloomed yet")
+            print(f"Seeds: 0")
         else:
             print(f"{self.name} is blooming beautifully!")
             print(f"Seeds: {self.seed_number}")
@@ -127,5 +128,10 @@ flower = Plant("Rose", 15.0, 10)
 tree = Plant("Oak", 300, 1000)
 print(flower.check_age(flower.get_age()))
 print(Plant.check_age(tree.get_age()))
+seed = Seed("sunflower", 80.0, 45)
+seed.show()
+seed.grow()
+seed.bloom()
+seed.show()
 unknown = Plant.anonymous()
 unknown.show()
